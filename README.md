@@ -10,13 +10,17 @@
 
 - `GET /health` → `{"ok": true}`
 
-## 第一次启动
+## 启动（M1：读 `~/.octop-mini/config.json`）
 
 ```powershell
 cd D:\study\Octop\octop-mini
 uv sync
-uv run uvicorn mini.api.main:app --reload --host 127.0.0.1 --port 8765
+uv run octop-mini
 ```
+
+自定义数据目录：`$env:MINI_HOME = "D:\tmp\mini-lab"`；覆盖端口：`$env:MINI_PORT = "9000"`。
+
+仍可用开发热重载：`uv run uvicorn mini.api.main:app --reload --host 127.0.0.1 --port 8765`
 
 - <http://127.0.0.1:8765/health>
 - <http://127.0.0.1:8765/docs>
