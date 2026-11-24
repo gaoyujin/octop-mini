@@ -33,4 +33,4 @@ uv run octop-mini run --port 9000 --reload
 
 ## 下一步
 
-打开 **[docs/course-01/07-微课-1.5-launch组合根-学习说明.md](docs/course-01/07-微课-1.5-launch组合根-学习说明.md)**（微课 1.5，只读官方、不改 mini 代码）。
+打开 **[docs/course-01/08-微课-1.6-server-start第一段-学习说明.md](docs/course-01/08-微课-1.6-server-start第一段-学习说明.md)**（微课 1.6，跟读官方 `OctopServer.start` 前半）。

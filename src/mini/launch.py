@@ -10,7 +10,8 @@ from typing import Any
 import uvicorn
 
 from mini.api.app import build_app
-from mini.infra.config import MiniConfig, load_config
+from mini.infra.boot import boot_control_plane
+from mini.infra.config import load_config
 from mini.infra.paths import PathLayout
 from mini.infra.runtime import MiniRuntime
 
@@ -40,6 +41,7 @@ async def run_foreground(
     effective = replace(cfg, bind_host=bind_host, port=bind_port)
     # 组合根：绑定本次 run 会话的路径布局与生效配置（后续 DB/agent 等也挂在此对象上）
     runtime = MiniRuntime(layout=layout, config=effective)
+    boot_control_plane(runtime)
 
     # uvicorn 日志级别；reload 模式下只能单进程，否则取 CLI 的 workers（至少 1）
     level = (log_level or "info").lower()

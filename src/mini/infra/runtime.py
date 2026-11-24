@@ -1,10 +1,11 @@
-"""In-process runtime handle (placeholder for future OctopServer equivalent)."""
+"""In-process runtime handle (mini ``OctopServer``)."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass, field
 
 from mini.infra.config import MiniConfig
+from mini.infra.db.services import SharedServices
 from mini.infra.paths import PathLayout
 
 
@@ -14,15 +15,25 @@ class MiniRuntime:
 
     layout: PathLayout
     config: MiniConfig
+    services: SharedServices | None = None
     _started: bool = field(default=False, repr=False)
 
     @property
     def started(self) -> bool:
         return self._started
 
+    @property
+    def database_bound(self) -> bool:
+        return self.services is not None
+
+    def attach_services(self, services: SharedServices) -> None:
+        self.services = services
+
     def mark_started(self) -> None:
         self._started = True
 
     async def stop(self) -> None:
-        """Teardown hook; extend when DB / agents are added."""
+        if self.services is not None:
+            self.services.db.close()
+        self.services = None
         self._started = False
