@@ -1,0 +1,1 @@
+"""Table access layer (SQL only)."""

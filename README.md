@@ -2,9 +2,12 @@
 
 与官方 Octop **独立**：在本地练架构；跟读对照 `D:\study\Octop\Octop-main`。
 
-## 课程 01 文档（从这里学）
+## 课程文档
 
-**[docs/course-01/README.md](docs/course-01/README.md)** — 配置与进程模型（微课 1.1～1.6）
+| 课程 | 入口 |
+|------|------|
+| 01 配置与进程 | [docs/course-01/README.md](docs/course-01/README.md) |
+| **02 数据库与迁移（当前）** | **[docs/course-02/README.md](docs/course-02/README.md)** |
 
 ## M0：当前能力
 
@@ -33,4 +36,4 @@ uv run octop-mini run --port 9000 --reload
 
 ## 下一步
 
-打开 **[docs/course-01/08-微课-1.6-server-start第一段-学习说明.md](docs/course-01/08-微课-1.6-server-start第一段-学习说明.md)**（微课 1.6，跟读官方 `OctopServer.start` 前半）。
+打开 **[docs/course-02/README.md](docs/course-02/README.md)**，先读 **03-起点与里程碑**，再跟 **01-微课**（建议从 2.3 迁移 users 做起）。

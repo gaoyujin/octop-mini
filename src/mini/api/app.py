@@ -28,12 +28,15 @@ def build_app(runtime: MiniRuntime) -> FastAPI:
     @app.get("/health", summary="Health check")
     async def health(request: Request) -> dict[str, object]:
         rt: MiniRuntime = request.app.state.runtime
-        version = rt.services.schema_version if rt.services is not None else None
+        services = rt.services
+        version = services.schema_version if services is not None else None
+        users_loaded = services.user_repo.count() if services is not None else 0
         return {
             "ok": True,
             "started": rt.started,
             "db_bound": rt.database_bound,
             "schema_version": version,
+            "users_loaded": users_loaded,
             "mini_home": str(rt.layout.root),
             "bind_host": rt.config.bind_host,
             "port": rt.config.port,
