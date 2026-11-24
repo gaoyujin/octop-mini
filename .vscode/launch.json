@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "pytest: health",
+        "type": "debugpy",
+        "request": "launch",
+        "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+        "module": "pytest",
+        "args": ["tests/test_health.py", "-s", "-vv"],
+        "cwd": "${workspaceFolder}",
+        "env": { "PYTHONPATH": "${workspaceFolder}/src" }
+      }
+    ]
+  }
