@@ -1,0 +1,1 @@
+"""octop-mini teaching package (not the official octop distribution)."""

@@ -1,0 +1,1 @@
+"""Domain layer placeholder (business logic lands here from M1 onward)."""

@@ -1,0 +1,1 @@
+"""HTTP adapters (FastAPI). Route handlers stay thin in later milestones."""
