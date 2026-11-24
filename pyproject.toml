@@ -8,6 +8,7 @@ version = "0.1.0"
 description = "Teaching lab: incremental Octop skeleton (M0)"
 requires-python = ">=3.12"
 dependencies = [
+    "click>=8.1",
     "fastapi>=0.110",
     "uvicorn[standard]>=0.27",
 ]
@@ -19,7 +20,7 @@ dev = ["httpx>=0.27", "pytest>=8.0"]
 packages = ["src/mini"]
 
 [project.scripts]
-octop-mini = "mini.run:main"
+octop-mini = "mini.cli.main:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

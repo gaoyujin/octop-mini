@@ -4,7 +4,9 @@ from mini.api.main import app
 
 
 def test_health_ok() -> None:
-    client = TestClient(app)
-    response = client.get("/health")
+    with TestClient(app) as client:
+        response = client.get("/health")
     assert response.status_code == 200
-    assert response.json() == {"ok": True}
+    body = response.json()
+    assert body["ok"] is True
+    assert "mini_home" in body

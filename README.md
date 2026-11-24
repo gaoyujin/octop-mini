@@ -10,17 +10,18 @@
 
 - `GET /health` → `{"ok": true}`
 
-## 启动（M1：读 `~/.octop-mini/config.json`）
+## 启动（微课 1.5：`cli` → `launch`）
 
 ```powershell
-cd D:\study\Octop\octop-mini
+cd D:\study\Octop\Octop-mini
 uv sync
-uv run octop-mini
+uv run octop-mini run
+uv run octop-mini run --port 9000 --reload
 ```
 
-自定义数据目录：`$env:MINI_HOME = "D:\tmp\mini-lab"`；覆盖端口：`$env:MINI_PORT = "9000"`。
+自定义数据目录：`$env:MINI_HOME = "D:\tmp\mini-lab"`；环境变量端口：`$env:MINI_PORT = "9000"`。
 
-仍可用开发热重载：`uv run uvicorn mini.api.main:app --reload --host 127.0.0.1 --port 8765`
+单测：`uv run pytest tests -q`
 
 - <http://127.0.0.1:8765/health>
 - <http://127.0.0.1:8765/docs>
@@ -32,4 +33,4 @@ uv run octop-mini
 
 ## 下一步
 
-打开 [docs/course-01/01-微课.md](docs/course-01/01-微课.md)，从 **1.3（M1 配置）** 继续。
+打开 **[docs/course-01/07-微课-1.5-launch组合根-学习说明.md](docs/course-01/07-微课-1.5-launch组合根-学习说明.md)**（微课 1.5，只读官方、不改 mini 代码）。

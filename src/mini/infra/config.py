@@ -9,7 +9,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
-from mini.infra.paths import config_file_path
+from mini.infra.paths import PathLayout
 
 logger = logging.getLogger(__name__)
 
@@ -63,9 +63,10 @@ def _parse_port(raw: dict[str, Any]) -> int | None:
     return port
 
 
-def load_config(path: Path | None = None) -> MiniConfig:
+def load_config(path: Path | None = None, layout: PathLayout | None = None) -> MiniConfig:
     """Load ``config.json``; create defaults if missing; apply env overrides last."""
-    cfg_path = path if path is not None else config_file_path()
+    paths = layout if layout is not None else PathLayout.from_env()
+    cfg_path = path if path is not None else paths.config
     file_defaults = _defaults_for_file()
 
     if cfg_path.exists():
@@ -81,7 +82,7 @@ def load_config(path: Path | None = None) -> MiniConfig:
                 f"{cfg_path} must contain a JSON object, got {type(raw).__name__}"
             )
     else:
-        cfg_path.parent.mkdir(parents=True, exist_ok=True)
+        paths.ensure_root()
         cfg_path.write_text(json.dumps(file_defaults, indent=2), encoding="utf-8")
         raw = {}
 

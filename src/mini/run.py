@@ -1,22 +1,10 @@
-"""Process entry: load config and run uvicorn (composition root preview)."""
+"""Backward-compatible entry: ``uv run octop-mini`` → Click CLI."""
 
 from __future__ import annotations
 
-import uvicorn
+from mini.cli.main import main
 
-from mini.infra.config import load_config
-
-
-def main() -> None:
-    cfg = load_config()
-    print(f"Loaded bind_host={cfg.bind_host} port={cfg.port}")
-    uvicorn.run(
-        "mini.api.main:app",
-        host=cfg.bind_host,
-        port=cfg.port,
-        reload=False,
-    )
-
+__all__ = ["main"]
 
 if __name__ == "__main__":
     main()

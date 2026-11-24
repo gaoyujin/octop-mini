@@ -1,0 +1,1 @@
+"""Click CLI (must not import ``mini.api`` except through ``launch``)."""
