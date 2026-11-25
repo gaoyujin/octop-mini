@@ -49,4 +49,4 @@ cd D:\study\Octop\Octop-main
 uv run pytest tests/unit -k "auth or jwt or users" -q
 ```
 
-上一课：[课程 02](../course-02/README.md) · 下一课预告：课程 04（FastAPI 薄路由深化）
+上一课：[课程 02](../course-02/README.md) · 下一课：[课程 04](../course-04/README.md)

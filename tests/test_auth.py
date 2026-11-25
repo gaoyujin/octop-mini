@@ -27,9 +27,11 @@ def test_login_and_me(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     with _client(tmp_path, monkeypatch) as client:
         unauth = client.get("/api/auth/me")
         assert unauth.status_code == 401
+        assert unauth.json()["code"] == "MISSING_BEARER_TOKEN"
 
         bad = client.post("/api/auth/login", json={"username": "alice", "password": "wrong"})
         assert bad.status_code == 401
+        assert bad.json() == {"code": "INVALID_CREDENTIALS", "message": "invalid credentials"}
 
         login = client.post("/api/auth/login", json={"username": "alice", "password": "secret123"})
         assert login.status_code == 200
