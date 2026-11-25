@@ -43,7 +43,7 @@ uv run uvicorn mini.api.main:app --reload --host 127.0.0.1 --port 8765
 
 ## 下一课程
 
-[课程 02：数据库与迁移](../course-02/README.md)
+[课程 02：数据库与迁移](../course-02/README.md) · [课程 03：用户与 JWT](../course-03/README.md)
 
 ## 官方跟读常用命令
 

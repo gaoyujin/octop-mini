@@ -7,6 +7,9 @@ from typing import TYPE_CHECKING
 
 from fastapi import FastAPI, Request
 
+from mini.api.middleware.jwt_auth import install_jwt_auth
+from mini.api.routers import auth
+
 if TYPE_CHECKING:
     from mini.infra.runtime import MiniRuntime
 
@@ -24,6 +27,8 @@ def build_app(runtime: MiniRuntime) -> FastAPI:
 
     app = FastAPI(title="octop-mini", version="0.1.0", lifespan=lifespan)
     app.state.runtime = runtime
+    app.include_router(auth.router)
+    install_jwt_auth(app)
 
     @app.get("/health", summary="Health check")
     async def health(request: Request) -> dict[str, object]:

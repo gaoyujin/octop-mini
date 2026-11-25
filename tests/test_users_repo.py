@@ -18,17 +18,19 @@ def test_user_repo_create_and_get(tmp_path: Path, monkeypatch: pytest.MonkeyPatc
     layout.ensure_root()
     pool = open_database(layout)
     run_migrations(pool)
-    assert current_schema_version(pool) == 2
+    assert current_schema_version(pool) == 3
 
     cfg = load_config(layout=layout)
     runtime = MiniRuntime(layout=layout, config=cfg)
     services = boot_control_plane(runtime)
     repo = services.user_repo
 
+    manager = services.user_manager
     assert repo.get_by_username("alice") is None
-    created = repo.create("alice")
+    created = manager.create_user("alice", "pass")
     assert created.username == "alice"
     assert created.id > 0
+    assert created.password_hash is not None
 
     loaded = repo.get_by_username("alice")
     assert loaded is not None

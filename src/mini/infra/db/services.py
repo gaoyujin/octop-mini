@@ -9,6 +9,7 @@ from mini.infra.db.migrate import current_schema_version
 from mini.infra.db.pool import SqlitePool
 from mini.infra.db.repos.users import UserRepo
 from mini.infra.paths import PathLayout
+from mini.infra.users.manager import UserManager
 
 
 @dataclass(frozen=True, slots=True)
@@ -19,6 +20,7 @@ class SharedServices:
     layout: PathLayout
     config: MiniConfig
     user_repo: UserRepo
+    user_manager: UserManager
 
     @property
     def schema_version(self) -> int:
@@ -31,9 +33,11 @@ def build_shared_services(
     layout: PathLayout,
     config: MiniConfig,
 ) -> SharedServices:
+    user_repo = UserRepo(db)
     return SharedServices(
         db=db,
         layout=layout,
         config=config,
-        user_repo=UserRepo(db),
+        user_repo=user_repo,
+        user_manager=UserManager(user_repo),
     )

@@ -41,4 +41,4 @@ cd D:\study\Octop\Octop-main
 uv run pytest tests/unit/db -q
 ```
 
-上一课：[课程 01](../course-01/README.md) · 下一课预告：课程 03（用户 / JWT）
+上一课：[课程 01](../course-01/README.md) · 下一课：[课程 03](../course-03/README.md)（用户 / JWT）
