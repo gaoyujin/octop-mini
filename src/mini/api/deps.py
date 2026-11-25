@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import jwt
 from fastapi import Depends, Request
 
+from mini.infra.auth.jwt import decode_access_token
 from mini.infra.db.repos.users import UserRow
 from mini.infra.db.services import SharedServices
 from mini.infra.errors import ErrorCode, MiniError
@@ -33,3 +35,16 @@ def current_user(request: Request) -> UserRow:
     if user is None:
         raise MiniError(ErrorCode.NOT_AUTHENTICATED)
     return user
+
+
+def resolve_user_from_token(services: SharedServices, token: str) -> UserRow:
+    """WebSocket auth: query ``?token=`` mirrors official ``resolve_user_from_token``."""
+    try:
+        payload = decode_access_token(token)
+    except jwt.PyJWTError as exc:
+        raise MiniError(ErrorCode.INVALID_TOKEN) from exc
+    username = str(payload.get("sub") or "")
+    row = services.user_repo.get_by_username(username)
+    if row is None:
+        raise MiniError(ErrorCode.UNKNOWN_USER)
+    return row

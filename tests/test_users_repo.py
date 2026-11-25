@@ -18,7 +18,7 @@ def test_user_repo_create_and_get(tmp_path: Path, monkeypatch: pytest.MonkeyPatc
     layout.ensure_root()
     pool = open_database(layout)
     run_migrations(pool)
-    assert current_schema_version(pool) == 4
+    assert current_schema_version(pool) == 5
 
     cfg = load_config(layout=layout)
     runtime = MiniRuntime(layout=layout, config=cfg)

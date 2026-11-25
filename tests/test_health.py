@@ -10,6 +10,6 @@ def test_health_ok() -> None:
     body = response.json()
     assert body["ok"] is True
     assert body["db_bound"] is True
-    assert body["schema_version"] == 4
+    assert body["schema_version"] == 5
     assert body["users_loaded"] == 0
     assert "mini_home" in body

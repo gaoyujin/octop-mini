@@ -16,7 +16,7 @@ def test_agent_repo_create_and_list(tmp_path: Path, monkeypatch: pytest.MonkeyPa
     cfg = load_config(layout=layout)
     runtime = MiniRuntime(layout=layout, config=cfg)
     services = boot_control_plane(runtime)
-    assert services.schema_version == 4
+    assert services.schema_version == 5
 
     user = services.user_manager.create_user("owner", "pass12345")
     row = services.agent_repo.create(

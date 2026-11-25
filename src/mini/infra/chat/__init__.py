@@ -1,0 +1,1 @@
+"""Chat helpers (course 06)."""

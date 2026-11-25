@@ -19,6 +19,7 @@ class ErrorCode(StrEnum):
     AGENT_NAME_TAKEN = "AGENT_NAME_TAKEN"
     AGENT_ALREADY_RUNNING = "AGENT_ALREADY_RUNNING"
     AGENT_NOT_RUNNING = "AGENT_NOT_RUNNING"
+    THREAD_NOT_FOUND = "THREAD_NOT_FOUND"
 
 
 _DEFAULT_STATUS: dict[ErrorCode, int] = {
@@ -33,6 +34,7 @@ _DEFAULT_STATUS: dict[ErrorCode, int] = {
     ErrorCode.AGENT_NAME_TAKEN: 409,
     ErrorCode.AGENT_ALREADY_RUNNING: 409,
     ErrorCode.AGENT_NOT_RUNNING: 409,
+    ErrorCode.THREAD_NOT_FOUND: 404,
 }
 
 _DEFAULT_MESSAGES: dict[ErrorCode, str] = {
@@ -47,6 +49,7 @@ _DEFAULT_MESSAGES: dict[ErrorCode, str] = {
     ErrorCode.AGENT_NAME_TAKEN: "agent name taken",
     ErrorCode.AGENT_ALREADY_RUNNING: "agent already running",
     ErrorCode.AGENT_NOT_RUNNING: "agent not running",
+    ErrorCode.THREAD_NOT_FOUND: "thread not found",
 }
 
 

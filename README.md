@@ -10,7 +10,8 @@
 | 02 数据库与迁移 | [docs/course-02/README.md](docs/course-02/README.md) |
 | 03 用户认证与 JWT | [docs/course-03/README.md](docs/course-03/README.md) |
 | 04 FastAPI 与路由层 | [docs/course-04/README.md](docs/course-04/README.md) |
-| **05 Agent 与 Harness（当前）** | **[docs/course-05/README.md](docs/course-05/README.md)** |
+| 05 Agent 与 Harness | [docs/course-05/README.md](docs/course-05/README.md) |
+| **06 对话与 WebSocket（当前）** | **[docs/course-06/README.md](docs/course-06/README.md)** |
 
 ## M0：当前能力
 
@@ -39,4 +40,4 @@ uv run octop-mini run --port 9000 --reload
 
 ## 下一步
 
-打开 **[docs/course-05/README.md](docs/course-05/README.md)**，先读 **03-起点与里程碑-M5**，再跟 **01-微课**（5.1 只读，从 5.2 起做实现）。
+打开 **[docs/course-06/README.md](docs/course-06/README.md)**，先读 **03-起点与里程碑-M6**，再跟 **01-微课**（6.3/6.4/6.6 可只读官方，实现重点 6.1→6.5）。

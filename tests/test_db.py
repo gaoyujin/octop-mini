@@ -19,12 +19,12 @@ def test_migrate_v1(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     pool = open_database(layout)
     assert current_schema_version(pool) == 0
     version = run_migrations(pool)
-    assert version == 4
-    assert current_schema_version(pool) == 4
+    assert version == 5
+    assert current_schema_version(pool) == 5
     assert layout.db.is_file()
     version_again = run_migrations(pool)
-    assert version_again == 4
-    assert current_schema_version(pool) == 4
+    assert version_again == 5
+    assert current_schema_version(pool) == 5
 
 
 def test_boot_control_plane(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -34,5 +34,5 @@ def test_boot_control_plane(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> 
     runtime = MiniRuntime(layout=layout, config=cfg)
     services = boot_control_plane(runtime)
     assert runtime.database_bound
-    assert services.schema_version == 4
+    assert services.schema_version == 5
     assert services.user_repo.count() == 0

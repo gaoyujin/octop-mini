@@ -66,4 +66,4 @@ uv run pytest tests/unit/agents -m "not live" -q
 | `BackendWorkspace` | 本地 `Path.mkdir` 占位，注释对照文档 |
 | Dashboard 创建 Agent | 5.6 **只读官方** API 与路由索引 |
 
-上一课：[课程 04](../course-04/README.md) · 下一课预告：课程 06（对话线程与 WebSocket）
+上一课：[课程 04](../course-04/README.md) · 下一课：[课程 06](../course-06/README.md)
