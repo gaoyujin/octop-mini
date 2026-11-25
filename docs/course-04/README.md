@@ -56,4 +56,4 @@ cd D:\study\Octop\Octop-main
 uv run python -c "import inspect; from octop.api.app import build_app; print('ok')"
 ```
 
-上一课：[课程 03](../course-03/README.md) · 下一课预告：课程 05（Agent）
+上一课：[课程 03](../course-03/README.md) · 下一课：[课程 05](../course-05/README.md)

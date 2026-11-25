@@ -10,7 +10,7 @@ from fastapi import FastAPI
 from mini.api.errors import register_exception_handlers
 from mini.api.middleware.jwt_auth import install_jwt_auth
 from mini.api.openapi_meta import OPENAPI_TAGS
-from mini.api.routers import auth, health, settings
+from mini.api.routers import agents, auth, health, settings
 
 if TYPE_CHECKING:
     from mini.infra.runtime import MiniRuntime
@@ -38,5 +38,6 @@ def build_app(runtime: MiniRuntime) -> FastAPI:
     app.include_router(health.router)
     app.include_router(auth.router)
     app.include_router(settings.router)
+    app.include_router(agents.router)
     install_jwt_auth(app)
     return app

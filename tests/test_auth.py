@@ -46,4 +46,4 @@ def test_health_stays_public(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) ->
     with _client(tmp_path, monkeypatch) as client:
         response = client.get("/health")
         assert response.status_code == 200
-        assert response.json()["schema_version"] == 3
+        assert response.json()["schema_version"] == 4

@@ -9,7 +9,8 @@
 | 01 配置与进程 | [docs/course-01/README.md](docs/course-01/README.md) |
 | 02 数据库与迁移 | [docs/course-02/README.md](docs/course-02/README.md) |
 | 03 用户认证与 JWT | [docs/course-03/README.md](docs/course-03/README.md) |
-| **04 FastAPI 与路由层（当前）** | **[docs/course-04/README.md](docs/course-04/README.md)** |
+| 04 FastAPI 与路由层 | [docs/course-04/README.md](docs/course-04/README.md) |
+| **05 Agent 与 Harness（当前）** | **[docs/course-05/README.md](docs/course-05/README.md)** |
 
 ## M0：当前能力
 
@@ -38,4 +39,4 @@ uv run octop-mini run --port 9000 --reload
 
 ## 下一步
 
-打开 **[docs/course-04/README.md](docs/course-04/README.md)**，先读 **03-起点与现状**，再跟 **01-微课** 从 4.1 起。
+打开 **[docs/course-05/README.md](docs/course-05/README.md)**，先读 **03-起点与里程碑-M5**，再跟 **01-微课**（5.1 只读，从 5.2 起做实现）。

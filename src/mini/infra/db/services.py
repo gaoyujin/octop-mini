@@ -7,6 +7,8 @@ from dataclasses import dataclass
 from mini.infra.config import MiniConfig
 from mini.infra.db.migrate import current_schema_version
 from mini.infra.db.pool import SqlitePool
+from mini.infra.agents.manager import AgentManager
+from mini.infra.db.repos.agents import AgentRepo
 from mini.infra.db.repos.users import UserRepo
 from mini.infra.paths import PathLayout
 from mini.infra.users.manager import UserManager
@@ -21,6 +23,8 @@ class SharedServices:
     config: MiniConfig
     user_repo: UserRepo
     user_manager: UserManager
+    agent_repo: AgentRepo
+    agent_manager: AgentManager
 
     @property
     def schema_version(self) -> int:
@@ -34,10 +38,13 @@ def build_shared_services(
     config: MiniConfig,
 ) -> SharedServices:
     user_repo = UserRepo(db)
+    agent_repo = AgentRepo(db)
     return SharedServices(
         db=db,
         layout=layout,
         config=config,
         user_repo=user_repo,
         user_manager=UserManager(user_repo),
+        agent_repo=agent_repo,
+        agent_manager=AgentManager(agent_repo, layout),
     )

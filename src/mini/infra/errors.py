@@ -14,6 +14,11 @@ class ErrorCode(StrEnum):
     MISSING_BEARER_TOKEN = "MISSING_BEARER_TOKEN"
     INVALID_TOKEN = "INVALID_TOKEN"
     UNKNOWN_USER = "UNKNOWN_USER"
+    FORBIDDEN = "FORBIDDEN"
+    AGENT_NOT_FOUND = "AGENT_NOT_FOUND"
+    AGENT_NAME_TAKEN = "AGENT_NAME_TAKEN"
+    AGENT_ALREADY_RUNNING = "AGENT_ALREADY_RUNNING"
+    AGENT_NOT_RUNNING = "AGENT_NOT_RUNNING"
 
 
 _DEFAULT_STATUS: dict[ErrorCode, int] = {
@@ -23,6 +28,11 @@ _DEFAULT_STATUS: dict[ErrorCode, int] = {
     ErrorCode.INVALID_TOKEN: 401,
     ErrorCode.UNKNOWN_USER: 401,
     ErrorCode.DATABASE_NOT_READY: 503,
+    ErrorCode.FORBIDDEN: 403,
+    ErrorCode.AGENT_NOT_FOUND: 404,
+    ErrorCode.AGENT_NAME_TAKEN: 409,
+    ErrorCode.AGENT_ALREADY_RUNNING: 409,
+    ErrorCode.AGENT_NOT_RUNNING: 409,
 }
 
 _DEFAULT_MESSAGES: dict[ErrorCode, str] = {
@@ -32,6 +42,11 @@ _DEFAULT_MESSAGES: dict[ErrorCode, str] = {
     ErrorCode.INVALID_TOKEN: "invalid token",
     ErrorCode.UNKNOWN_USER: "unknown user",
     ErrorCode.DATABASE_NOT_READY: "database not ready",
+    ErrorCode.FORBIDDEN: "forbidden",
+    ErrorCode.AGENT_NOT_FOUND: "agent not found",
+    ErrorCode.AGENT_NAME_TAKEN: "agent name taken",
+    ErrorCode.AGENT_ALREADY_RUNNING: "agent already running",
+    ErrorCode.AGENT_NOT_RUNNING: "agent not running",
 }
 
 
